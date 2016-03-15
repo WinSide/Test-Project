@@ -11,8 +11,8 @@ import ru.winside.testmod.tileentites.TEBucket;
 
 public class CommonProxy {
 	
-	public static Block barrelBlock = new Barrel(Material.wood).setCreativeTab(CreativeTabs.tabBlock);
-	public static Block bukkitBlock = new Bucket(Material.wood).setCreativeTab(CreativeTabs.tabBlock);
+	public static Block barrelBlock = new Barrel(Material.wood).setBlockName("barrelBlock").setCreativeTab(CreativeTabs.tabBlock);
+	public static Block bukkitBlock = new Bucket(Material.wood).setBlockName("bucketBlock").setCreativeTab(CreativeTabs.tabBlock);
 	
 	public static void init(){
 		GameRegistry.registerBlock(barrelBlock, "barrelBlock");
