@@ -10,7 +10,7 @@ import ru.winside.testmod.Main;
 
 public class JustItem extends Item {
 	public JustItem() {
-		setMaxStackSize(64);
+		setMaxStackSize(1);
 		setCreativeTab(CreativeTabs.tabMisc);
 		setUnlocalizedName("justItem");
 	}
