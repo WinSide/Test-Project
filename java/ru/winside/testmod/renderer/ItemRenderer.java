@@ -25,66 +25,46 @@ public class ItemRenderer implements IItemRenderer {
 		case INVENTORY:
 			return true;
 		default:
-			return false;
+			return true;
 		}
 	}
 
 	@Override
 	public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack item, ItemRendererHelper helper) {
-		// TODO Auto-generated method stub
 		return false;
+	}
+	
+	public void renderBarrel(float x, float y, float z, float rotateX, float rotateY, float rotateZ, float scaleXYZ){
+		GL11.glPushMatrix();
+		Minecraft.getMinecraft().renderEngine.bindTexture(TESRBarrel.texture);
+		GL11.glTranslatef(x, y, z);
+		GL11.glRotatef(rotateX, 1F, 0F, 0F);
+		GL11.glRotatef(rotateY, 0F, 1F, 0F);
+		GL11.glRotatef(rotateZ, 0F, 0F, 1F);
+		GL11.glScalef(scaleXYZ, scaleXYZ, scaleXYZ);
+		TESRBarrel.model.renderAll();
+		GL11.glPopMatrix();
 	}
 
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
 		switch (type) {
 		case EQUIPPED: {
-
+			renderBarrel(0.5f, -0.3f, 0.3f, 0f, 0f, 0f, 0.03f);
+			return;
 		}
 		case EQUIPPED_FIRST_PERSON: {
-			GL11.glPushMatrix();
-			boolean isFirstPerson = false;
-			if (data[1] != null && data[1] instanceof EntityPlayer) {
-				Minecraft.getMinecraft().renderEngine.bindTexture(TESRBarrel.texture);
-
-				if (!((EntityPlayer) data[1] == Minecraft.getMinecraft().renderViewEntity
-						&& Minecraft.getMinecraft().gameSettings.thirdPersonView == 0
-						&& !((Minecraft.getMinecraft().currentScreen instanceof GuiInventory
-								|| Minecraft.getMinecraft().currentScreen instanceof GuiContainerCreative)
-								&& RenderManager.instance.playerViewY == 180.0F))) {
-					GL11.glTranslatef(0.25F, 0.1F, 0.0F);
-					GL11.glRotatef(30F, 1F, 0F, 0F);
-					GL11.glRotatef(50F, -10F, 1F, 0F);
-					GL11.glRotatef(0F, 0F, 0F, 1F);
-					isFirstPerson = false;
-				} else {
-					isFirstPerson = true;
-
-					GL11.glTranslatef(0.7F, 0.3F, 0.7F);
-
-					GL11.glRotatef(-170F, 1F, 0F, 0F);
-					GL11.glRotatef(10F, 0F, 1F, 0F);
-					GL11.glRotatef(-90F, 0F, 0F, 1F);
-				}
-				float par1 = 0.045f;
-				GL11.glScalef(par1, par1, par1);
-				TESRBarrel.model.renderAll();
-				GL11.glPopMatrix();
-			}
+			renderBarrel(0.8f, 0.4f, 0.0f, -20f, -10f, 70f, 0.02f);
+			return;
 		}
 		case INVENTORY: {
-			/*
-			 * Minecraft.getMinecraft().renderEngine.bindTexture(TESRBarrel.
-			 * texture); GL11.glPushMatrix(); GL11.glTranslatef(0.7F, 0.3F,
-			 * 0.7F); GL11.glRotatef(-170F, 1F, 0F, 0F); GL11.glRotatef(10F, 0F,
-			 * 1F, 0F); GL11.glRotatef(-90F, 0F, 0F, 1F);
-			 * TESRBarrel.model.renderAll(); GL11.glPopMatrix();
-			 */
+			renderBarrel(3.0f, 3.0f, 0.0f, 50f, 30f, -60f, 0.36f);
+			return;
 		}
 
 		default:
-			break;
-
+			renderBarrel(0.0f, 0.5f, 0.0f, 0f, 0f, 0f, 0.04f);
+			return;
 		}
 
 	}
