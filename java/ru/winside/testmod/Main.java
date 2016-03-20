@@ -12,9 +12,11 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.common.MinecraftForge;
+import ru.winside.testmod.items.Galil;
 import ru.winside.testmod.items.JustItem;
 import ru.winside.testmod.proxies.ClientProxy;
 import ru.winside.testmod.proxies.CommonProxy;
+import ru.winside.testmod.utils.ArmRotation;
 import ru.winside.testmod.utils.TestModEventHooks;
 import ru.winside.testmod.utils.TestModPotion;
 
@@ -25,6 +27,7 @@ public class Main {
     public static final String NAME = "WinSide Test Mod";
 	
 	public static Item justItem;
+	public static Item Galil;
 	
 	public static Potion JustPotion;
 
@@ -57,6 +60,7 @@ public class Main {
 	    }
 
 	    MinecraftForge.EVENT_BUS.register(new TestModEventHooks());
+	    MinecraftForge.EVENT_BUS.register(new ArmRotation());
 	}
 	
 	@EventHandler
@@ -65,6 +69,9 @@ public class Main {
 		
 		justItem = new JustItem();
 		GameRegistry.registerItem(justItem, "justItem");
+		
+		Galil = new Galil();
+		GameRegistry.registerItem(Galil, "galil");
 		
 		JustPotion = (new TestModPotion(40, false, 0)).setIconIndex(0, 0).setPotionName("Suka Bleat'");
 	}
