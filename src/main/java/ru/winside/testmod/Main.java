@@ -65,7 +65,6 @@ public class Main {
 	
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
-		ClientProxy.init();
 		
 		justItem = new JustItem();
 		GameRegistry.registerItem(justItem, "justItem");
@@ -74,5 +73,7 @@ public class Main {
 		GameRegistry.registerItem(Galil, "galil");
 		
 		JustPotion = (new TestModPotion(40, false, 0)).setIconIndex(0, 0).setPotionName("Suka Bleat'");
+		
+		ClientProxy.init();
 	}
 }
