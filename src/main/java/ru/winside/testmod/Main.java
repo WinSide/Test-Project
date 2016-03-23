@@ -5,6 +5,7 @@ import java.lang.reflect.Modifier;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -12,7 +13,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.Item;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.common.MinecraftForge;
-import ru.winside.testmod.items.Galil;
+import ru.winside.testmod.items.Ak74;
 import ru.winside.testmod.items.JustItem;
 import ru.winside.testmod.proxies.ClientProxy;
 import ru.winside.testmod.proxies.CommonProxy;
@@ -22,12 +23,16 @@ import ru.winside.testmod.utils.TestModPotion;
 
 @Mod(modid = Main.MODID, version = Main.VERSION, name = Main.NAME)
 public class Main {
+	
+	@Instance(Main.MODID)
+	public static Main instance;
+	
 	public static final String MODID = "winsidemods";
     public static final String VERSION = "1.0";
     public static final String NAME = "WinSide Test Mod";
 	
 	public static Item justItem;
-	public static Item Galil;
+	public static Item Ak74;
 	
 	public static Potion JustPotion;
 
@@ -69,8 +74,8 @@ public class Main {
 		justItem = new JustItem();
 		GameRegistry.registerItem(justItem, "justItem");
 		
-		Galil = new Galil();
-		GameRegistry.registerItem(Galil, "galil");
+		Ak74 = new Ak74().setTextureName(MODID + ":ak74i");
+		GameRegistry.registerItem(Ak74, "ak74");
 		
 		JustPotion = (new TestModPotion(40, false, 0)).setIconIndex(0, 0).setPotionName("Suka Bleat'");
 		

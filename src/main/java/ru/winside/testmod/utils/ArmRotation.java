@@ -20,7 +20,7 @@ public class ArmRotation {
 			if (item == null) {
 				return;
 			}
-			if (item.getItem() == Main.justItem || item.getItem() == Main.Galil) {
+			if (item.getItem() == Main.justItem || item.getItem() == Main.Ak74) {
 				RenderPlayer rp = (RenderPlayer) event.renderer;
 
 				rp.modelArmorChestplate.aimedBow = rp.modelArmor.aimedBow = rp.modelBipedMain.aimedBow = true;
